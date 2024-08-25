@@ -6,9 +6,13 @@ import com.dymometr.Dymometr.mapper.Mapper;
 import com.dymometr.Dymometr.services.interfaces.SensorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class SensorController {
@@ -30,5 +34,13 @@ public class SensorController {
                 sensorMapper.mapTo(savedSensorEntity),
                 HttpStatus.CREATED
         );
+    }
+
+    @GetMapping(path = "/sensor")
+    public List<SensorDto> listSensor(){
+        List<SensorEntity> sensorEntityList = sensorService.findAll();
+        //todo check if list is empty
+
+        return sensorEntityList.stream().map(sensorMapper::mapTo).collect(Collectors.toList());
     }
 }

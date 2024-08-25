@@ -14,6 +14,7 @@ com\dymometr\Dymometr\domain\dto\SensorDto.class
 com\dymometr\Dymometr\domain\dto\SensorLocalizationDto.class
 com\dymometr\Dymometr\domain\dto\SensorDataDto.class
 com\dymometr\Dymometr\domain\entity\SensorLocalizationEntity$SensorLocalizationEntityBuilder.class
+com\dymometr\Dymometr\controllers\SensorController.class
 com\dymometr\Dymometr\mapper\Mapper.class
 com\dymometr\Dymometr\repositories\SensorRepository.class
 com\dymometr\Dymometr\domain\entity\SensorDataEntity.class
