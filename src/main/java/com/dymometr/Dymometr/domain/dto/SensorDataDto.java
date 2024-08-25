@@ -1,6 +1,8 @@
 package com.dymometr.Dymometr.domain.dto;
 
+import com.dymometr.Dymometr.domain.entity.SensorEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +16,7 @@ import java.time.LocalDateTime;
 @Data
 public class SensorDataDto {
     private Long sensorDataId;
-    private Long sensorId;
-
+    private SensorEntity sensor;
     private Integer sensorData;
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDateTime sensorDataSendDate;
+    private String sensorDataSendDate;
 }

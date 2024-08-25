@@ -23,7 +23,7 @@ public class SensorEntity {
     @Column(name = "sensor_name")
     private String sensorName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "localization_id")
     private SensorLocalizationEntity sensorLocalization;
 

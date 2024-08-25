@@ -9,17 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WelcomeController {
-    private final SensorService sensorService;
-    private final Mapper<SensorEntity, SensorDto> sensorMapper;
-
-    public WelcomeController(SensorService sensorService, Mapper<SensorEntity, SensorDto> sensorMapper) {
-        this.sensorService = sensorService;
-        this.sensorMapper = sensorMapper;
-    }
-
     //Ping controller
     @GetMapping(path = "/")
-    public String ping(){
+    public String ping() {
         return "You are connected to API";
     }
 }
