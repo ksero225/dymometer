@@ -27,6 +27,6 @@ public class SensorEntity {
     @JoinColumn(name = "localization_id")
     private SensorLocalizationEntity sensorLocalization;
 
-    @OneToMany(mappedBy = "sensor", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sensor", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SensorDataEntity> sensorDataList;
 }

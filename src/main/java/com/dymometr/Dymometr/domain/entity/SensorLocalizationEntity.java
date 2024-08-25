@@ -26,6 +26,6 @@ public class SensorLocalizationEntity {
     @Column(name = "town")
     private String sensorTown;
 
-    @OneToMany(mappedBy = "sensorLocalization", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sensorLocalization", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<SensorEntity> sensors;
 }
