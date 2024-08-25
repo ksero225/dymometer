@@ -1,0 +1,31 @@
+package com.dymometr.Dymometr.domain.entity;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "sensor_localization")
+public class SensorLocalizationEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "localization_id")
+    private Long sensorLocalizationId;
+
+    @Column(name = "voivodeship")
+    private String sensorVoivodeship;
+
+    @Column(name = "town")
+    private String sensorTown;
+
+    @OneToMany(mappedBy = "sensorLocalization", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<SensorEntity> sensors;
+}
