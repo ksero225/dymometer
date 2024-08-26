@@ -4,14 +4,14 @@ import com.dymometr.Dymometr.domain.dto.SensorDto;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 import com.dymometr.Dymometr.mapper.Mapper;
 import com.dymometr.Dymometr.services.interfaces.SensorService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -36,11 +36,64 @@ public class SensorController {
         );
     }
 
-    @GetMapping(path = "/sensor")
-    public List<SensorDto> listSensor(){
-        List<SensorEntity> sensorEntityList = sensorService.findAll();
-        //todo check if list is empty
+    @GetMapping(path = "/sensor/{sensorId}")
+    public ResponseEntity<SensorDto> getOneSensor(@PathVariable("sensorId") Long sensorId) {
+        Optional<SensorEntity> foundSensor = sensorService.findOne(sensorId);
 
+        return foundSensor.map(SensorEntity -> {
+            SensorDto sensorDto = sensorMapper.mapTo(SensorEntity);
+            return new ResponseEntity<>(
+                    sensorDto,
+                    HttpStatus.OK
+            );
+        }).orElse(
+                new ResponseEntity<>(HttpStatus.NOT_FOUND)
+        );
+    }
+
+    //todo change it to page not list, hehe
+    @GetMapping(path = "/sensor")
+    public List<SensorDto> listSensor() {
+        List<SensorEntity> sensorEntityList = sensorService.findAll();
         return sensorEntityList.stream().map(sensorMapper::mapTo).collect(Collectors.toList());
+    }
+
+    @PutMapping(path = "/sensor/{sensorId}")
+    public ResponseEntity<SensorDto> fullUpdateSensor(@PathVariable("sensorId") Long sensorId, @RequestBody SensorDto sensorDto) {
+        Optional<SensorEntity> foundSensor = sensorService.findOne(sensorId);
+
+        if (foundSensor.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        SensorEntity sensorEntity = sensorMapper.mapFrom(sensorDto);
+        sensorEntity.setSensorId(sensorId);
+        SensorEntity savedSensorEntity = sensorService.save(sensorEntity);
+
+        return new ResponseEntity<>(
+                sensorMapper.mapTo(savedSensorEntity),
+                HttpStatus.OK
+        );
+    }
+
+    @PatchMapping(path = "/sensor/{sensorId}")
+    public ResponseEntity<SensorDto> partialUpdateSensor(
+            @PathVariable("sensorId") Long sensorId,
+            @RequestBody SensorDto sensorDto
+    ) {
+        Optional<SensorEntity> foundSensor = sensorService.findOne(sensorId);
+
+        if(foundSensor.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        SensorEntity sensorEntity = sensorMapper.mapFrom(sensorDto);
+        sensorEntity.setSensorId(sensorId);
+        SensorEntity savedSensorEntity = sensorService.partialUpdate(sensorEntity);
+
+        return new ResponseEntity<>(
+                sensorMapper.mapTo(savedSensorEntity),
+                HttpStatus.OK
+        );
     }
 }

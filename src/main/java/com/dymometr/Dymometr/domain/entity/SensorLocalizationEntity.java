@@ -1,5 +1,6 @@
 package com.dymometr.Dymometr.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 @Builder
 @NoArgsConstructor
@@ -26,6 +28,7 @@ public class SensorLocalizationEntity {
     @Column(name = "town")
     private String sensorTown;
 
-    @OneToMany(mappedBy = "sensorLocalization", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "sensorLocalization", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<SensorEntity> sensors;
 }

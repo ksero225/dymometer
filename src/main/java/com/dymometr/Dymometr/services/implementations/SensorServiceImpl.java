@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SensorServiceImpl implements SensorService {
@@ -22,7 +23,25 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public Optional<SensorEntity> findOne(Long sensorId) {
+        return sensorRepository.findById(sensorId);
+    }
+
+    @Override
     public List<SensorEntity> findAll() {
         return new ArrayList<>(sensorRepository.findAll());
+    }
+
+    @Override
+    public SensorEntity partialUpdate(SensorEntity sensorEntity) {
+        Optional<SensorEntity> foundSensor = sensorRepository.findById(sensorEntity.getSensorId());
+
+        return foundSensor.map(existingSensor -> {
+            Optional.ofNullable(sensorEntity.getSensorName()).ifPresent(existingSensor::setSensorName);
+            Optional.ofNullable(sensorEntity.getSensorLocalization()).ifPresent(existingSensor::setSensorLocalization);
+            Optional.ofNullable(sensorEntity.getSensorDataList()).ifPresent(existingSensor::setSensorDataList);
+
+            return sensorRepository.save(existingSensor);
+        }).orElseThrow(() -> new RuntimeException("Sensor does not exist"));
     }
 }

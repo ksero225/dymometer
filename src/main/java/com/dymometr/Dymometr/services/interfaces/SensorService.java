@@ -3,9 +3,14 @@ package com.dymometr.Dymometr.services.interfaces;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SensorService {
     SensorEntity save(SensorEntity sensorEntity);
 
     List<SensorEntity> findAll();
+
+    Optional<SensorEntity> findOne(Long sensorId);
+
+    SensorEntity partialUpdate(SensorEntity sensorEntity);
 }

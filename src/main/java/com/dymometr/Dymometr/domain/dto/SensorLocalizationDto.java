@@ -1,6 +1,7 @@
 package com.dymometr.Dymometr.domain.dto;
 
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

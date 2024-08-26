@@ -1,10 +1,13 @@
 package com.dymometr.Dymometr.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Objects;
 
 @Builder
 @NoArgsConstructor
@@ -18,7 +21,8 @@ public class SensorDataEntity {
     @Column(name = "sensor_data_id")
     private Long sensorDataId;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "sensor_id")
     private SensorEntity sensor;
 
