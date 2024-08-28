@@ -1,4 +1,5 @@
 com\dymometr\Dymometr\domain\entity\SensorDataEntity$SensorDataEntityBuilder.class
+com\dymometr\Dymometr\domain\specification\SensorSpecifications.class
 com\dymometr\Dymometr\DymometrApplication.class
 com\dymometr\Dymometr\config\MapperConfig.class
 com\dymometr\Dymometr\services\implementations\SensorServiceImpl.class

@@ -1,6 +1,5 @@
 package com.dymometr.Dymometr.services.interfaces;
 
-import com.dymometr.Dymometr.domain.dto.SensorDto;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 
 import java.util.List;

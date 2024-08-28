@@ -1,6 +1,5 @@
 package com.dymometr.Dymometr.services.implementations;
 
-import com.dymometr.Dymometr.domain.dto.SensorDto;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 import com.dymometr.Dymometr.domain.specification.SensorSpecifications;
 import com.dymometr.Dymometr.repositories.SensorRepository;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class SensorServiceImpl implements SensorService {

@@ -7,6 +7,7 @@ D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\entity\SensorDataEntity.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\entity\SensorEntity.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\entity\SensorLocalizationEntity.java
+D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\specification\SensorSpecifications.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\DymometrApplication.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\mapper\implementations\SensorMapper.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\mapper\Mapper.java
