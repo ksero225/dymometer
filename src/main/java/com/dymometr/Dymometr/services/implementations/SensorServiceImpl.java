@@ -1,13 +1,17 @@
 package com.dymometr.Dymometr.services.implementations;
 
+import com.dymometr.Dymometr.domain.dto.SensorDto;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
+import com.dymometr.Dymometr.domain.specification.SensorSpecifications;
 import com.dymometr.Dymometr.repositories.SensorRepository;
 import com.dymometr.Dymometr.services.interfaces.SensorService;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class SensorServiceImpl implements SensorService {
@@ -33,6 +37,19 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public List<SensorEntity> getSensorBasedOnVoivodeshipAndTown(String voivodeship, String town) {
+        Specification<SensorEntity> spec = Specification.where(null);
+
+        if (voivodeship != null && !voivodeship.isEmpty())
+            spec = spec.and(SensorSpecifications.hasVoivodeship(voivodeship));
+
+        if (town != null && !town.isEmpty())
+            spec = spec.and(SensorSpecifications.hasTown(town));
+
+        return sensorRepository.findAll(spec);
+    }
+
+    @Override
     public SensorEntity partialUpdate(SensorEntity sensorEntity) {
         Optional<SensorEntity> foundSensor = sensorRepository.findById(sensorEntity.getSensorId());
 
@@ -43,5 +60,10 @@ public class SensorServiceImpl implements SensorService {
 
             return sensorRepository.save(existingSensor);
         }).orElseThrow(() -> new RuntimeException("Sensor does not exist"));
+    }
+
+    @Override
+    public void deleteById(Long sensorId) {
+        sensorRepository.deleteById(sensorId);
     }
 }

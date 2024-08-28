@@ -2,15 +2,18 @@ package com.dymometr.Dymometr.controllers;
 
 import com.dymometr.Dymometr.domain.dto.SensorDto;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
+import com.dymometr.Dymometr.domain.specification.SensorSpecifications;
 import com.dymometr.Dymometr.mapper.Mapper;
 import com.dymometr.Dymometr.services.interfaces.SensorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -52,11 +55,22 @@ public class SensorController {
     }
 
     //todo change it to page not list, hehe
-    @GetMapping(path = "/sensor")
+    @GetMapping(path = "/sensor/all")
     public List<SensorDto> listSensor() {
         List<SensorEntity> sensorEntityList = sensorService.findAll();
         return sensorEntityList.stream().map(sensorMapper::mapTo).collect(Collectors.toList());
     }
+
+    @GetMapping(path = "/sensor")
+    public List<SensorDto> filterSensor(
+            @RequestParam(required = false) String voivodeship,
+            @RequestParam(required = false) String town
+    ) {
+        List<SensorEntity> foundSensorEntities = sensorService.getSensorBasedOnVoivodeshipAndTown(voivodeship, town);
+
+        return foundSensorEntities.stream().map(sensorMapper::mapTo).collect(Collectors.toList());
+    }
+
 
     @PutMapping(path = "/sensor/{sensorId}")
     public ResponseEntity<SensorDto> fullUpdateSensor(@PathVariable("sensorId") Long sensorId, @RequestBody SensorDto sensorDto) {
@@ -83,7 +97,7 @@ public class SensorController {
     ) {
         Optional<SensorEntity> foundSensor = sensorService.findOne(sensorId);
 
-        if(foundSensor.isEmpty()){
+        if (foundSensor.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -95,5 +109,12 @@ public class SensorController {
                 sensorMapper.mapTo(savedSensorEntity),
                 HttpStatus.OK
         );
+    }
+
+    @DeleteMapping(path = "/sensor/{sensorId}")
+    public ResponseEntity<Void> deleteSensor(@PathVariable("sensorId") Long sensorId) {
+        sensorService.deleteById(sensorId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
