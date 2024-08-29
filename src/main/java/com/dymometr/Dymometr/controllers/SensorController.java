@@ -53,8 +53,8 @@ public class SensorController {
 
     @GetMapping(path = "/sensor")
     public List<SensorDto> filterSensor(
-            @RequestParam(required = false) String voivodeship,
-            @RequestParam(required = false) String town
+            @RequestParam(value = "voivodeship", required = false) String voivodeship,
+            @RequestParam(value = "town", required = false) String town
     ) {
         List<SensorEntity> foundSensorEntities = sensorService.getSensorBasedOnVoivodeshipAndTown(voivodeship, town);
 
