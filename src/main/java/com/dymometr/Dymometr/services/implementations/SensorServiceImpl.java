@@ -1,7 +1,9 @@
 package com.dymometr.Dymometr.services.implementations;
 
+import com.dymometr.Dymometr.domain.entity.SensorDataEntity;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 import com.dymometr.Dymometr.domain.specification.SensorSpecifications;
+import com.dymometr.Dymometr.repositories.SensorDataRepository;
 import com.dymometr.Dymometr.repositories.SensorRepository;
 import com.dymometr.Dymometr.services.interfaces.SensorService;
 import org.springframework.data.jpa.domain.Specification;
@@ -14,9 +16,11 @@ import java.util.Optional;
 @Service
 public class SensorServiceImpl implements SensorService {
     private final SensorRepository sensorRepository;
+    private final SensorDataRepository sensorDataRepository;
 
-    public SensorServiceImpl(SensorRepository sensorRepository) {
+    public SensorServiceImpl(SensorRepository sensorRepository, SensorDataRepository sensorDataRepository) {
         this.sensorRepository = sensorRepository;
+        this.sensorDataRepository = sensorDataRepository;
     }
 
     @Override
@@ -48,13 +52,18 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public Optional<SensorDataEntity> getSensorLatestData(Long sensorId) {
+        return sensorDataRepository.findTopBySensorSensorIdOrderBySensorDataSendDateDesc(sensorId);
+    }
+
+    @Override
     public SensorEntity partialUpdate(SensorEntity sensorEntity) {
         Optional<SensorEntity> foundSensor = sensorRepository.findById(sensorEntity.getSensorId());
 
         return foundSensor.map(existingSensor -> {
             Optional.ofNullable(sensorEntity.getSensorName()).ifPresent(existingSensor::setSensorName);
             Optional.ofNullable(sensorEntity.getSensorLocalization()).ifPresent(existingSensor::setSensorLocalization);
-            Optional.ofNullable(sensorEntity.getSensorDataList()).ifPresent(existingSensor::setSensorDataList);
+            Optional.ofNullable(sensorEntity.getLastSensorData()).ifPresent(existingSensor::setLastSensorData);
 
             return sensorRepository.save(existingSensor);
         }).orElseThrow(() -> new RuntimeException("Sensor does not exist"));

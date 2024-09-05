@@ -30,8 +30,6 @@ public class SensorEntity {
     @JsonBackReference
     private SensorLocalizationEntity sensorLocalization;
 
-
-    @OneToMany(mappedBy = "sensor", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<SensorDataEntity> sensorDataList;
+    @Transient
+    private SensorDataEntity lastSensorData;
 }

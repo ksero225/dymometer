@@ -1,5 +1,6 @@
 package com.dymometr.Dymometr.services.interfaces;
 
+import com.dymometr.Dymometr.domain.entity.SensorDataEntity;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface SensorService {
     void deleteById(Long sensorId);
 
     List<SensorEntity> getSensorBasedOnVoivodeshipAndTown(String voivodeship, String town);
+
+    Optional<SensorDataEntity> getSensorLatestData(Long sensorId);
 }

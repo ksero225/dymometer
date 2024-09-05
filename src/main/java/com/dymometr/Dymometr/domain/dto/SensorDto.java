@@ -17,5 +17,5 @@ public class SensorDto {
     private Long sensorId;
     private String sensorName;
     private SensorLocalizationEntity sensorLocalization;
-    private List<SensorDataEntity> sensorDataList;
+    private SensorDataEntity lastSensorData;
 }

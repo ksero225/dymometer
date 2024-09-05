@@ -1,6 +1,7 @@
 package com.dymometr.Dymometr.controllers;
 
 import com.dymometr.Dymometr.domain.dto.SensorDto;
+import com.dymometr.Dymometr.domain.entity.SensorDataEntity;
 import com.dymometr.Dymometr.domain.entity.SensorEntity;
 import com.dymometr.Dymometr.mapper.Mapper;
 import com.dymometr.Dymometr.services.interfaces.SensorService;
@@ -39,7 +40,9 @@ public class SensorController {
         Optional<SensorEntity> foundSensor = sensorService.findOne(sensorId);
 
         return foundSensor.map(SensorEntity -> {
+            Optional<SensorDataEntity> foundSensorLatestData = sensorService.getSensorLatestData(sensorId);
             SensorDto sensorDto = sensorMapper.mapTo(SensorEntity);
+            foundSensorLatestData.ifPresent(sensorDto::setLastSensorData);
             return new ResponseEntity<>(
                     sensorDto,
                     HttpStatus.OK
@@ -57,6 +60,10 @@ public class SensorController {
             @RequestParam(value = "town", required = false) String town
     ) {
         List<SensorEntity> foundSensorEntities = sensorService.getSensorBasedOnVoivodeshipAndTown(voivodeship, town);
+        foundSensorEntities.forEach(SensorEntity -> {
+            Optional<SensorDataEntity> foundSensorLatestData = sensorService.getSensorLatestData(SensorEntity.getSensorId());
+            foundSensorLatestData.ifPresent(SensorEntity::setLastSensorData);
+        });
 
         return foundSensorEntities.stream()
                 .map(sensorMapper::mapTo)
