@@ -16,5 +16,5 @@ public class SensorLocalizationDto {
     private Long sensorLocalizationId;
     private String sensorVoivodeship;
     private String sensorTown;
-    private List<SensorEntity> sensors;
+//    private List<SensorEntity> sensors;
 }

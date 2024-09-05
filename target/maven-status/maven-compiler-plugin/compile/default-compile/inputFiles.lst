@@ -1,6 +1,7 @@
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\config\MapperConfig.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\config\WebConfig.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\controllers\SensorController.java
+D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\controllers\SensorDataController.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\controllers\WelcomeController.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\dto\SensorDataDto.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\dto\SensorDto.java
@@ -10,8 +11,12 @@ D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\entity\SensorLocalizationEntity.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\domain\specification\SensorSpecifications.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\DymometrApplication.java
+D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\mapper\implementations\SensorDataMapper.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\mapper\implementations\SensorMapper.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\mapper\Mapper.java
+D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\repositories\SensorDataRepository.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\repositories\SensorRepository.java
+D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\services\implementations\SensorDataServiceImpl.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\services\implementations\SensorServiceImpl.java
+D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\services\interfaces\SensorDataService.java
 D:\JavaProjects\DymometerApp\Dymometr\src\main\java\com\dymometr\Dymometr\services\interfaces\SensorService.java

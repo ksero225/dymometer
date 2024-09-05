@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.dymometr.Dymometr.DymometrApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.763 s -- in com.dymometr.Dymometr.DymometrApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.530 s -- in com.dymometr.Dymometr.DymometrApplicationTests
