@@ -8,6 +8,6 @@ public class WelcomeController {
     //Ping controller
     @GetMapping(path = "/")
     public String ping() {
-        return "You are connected to API";
+        return "You are connected to API. Visit /swagger-ui.html for detailed information.";
     }
 }
