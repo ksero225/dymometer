@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Entity(name = "user")
+@Entity(name = "trustcare_user")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

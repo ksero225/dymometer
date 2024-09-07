@@ -2,7 +2,10 @@ com\dymometr\Dymometr\domain\entity\SensorDataEntity$SensorDataEntityBuilder.cla
 com\dymometr\Dymometr\domain\specification\SensorSpecifications.class
 com\dymometr\Dymometr\config\MapperConfig.class
 com\dymometr\Dymometr\services\implementations\SensorServiceImpl.class
+com\dymometr\Dymometr\domain\dto\UserDto.class
+com\dymometr\Dymometr\services\interfaces\UserService.class
 com\dymometr\Dymometr\domain\entity\SensorEntity.class
+com\dymometr\Dymometr\repositories\UserRepository.class
 com\dymometr\Dymometr\services\interfaces\SensorDataService.class
 com\dymometr\Dymometr\domain\dto\SensorDataDto$SensorDataDtoBuilder.class
 com\dymometr\Dymometr\domain\entity\SensorEntity$SensorEntityBuilder.class
@@ -13,8 +16,13 @@ com\dymometr\Dymometr\services\implementations\SensorDataServiceImpl.class
 com\dymometr\Dymometr\controllers\SensorController.class
 com\dymometr\Dymometr\domain\entity\SensorDataEntity.class
 com\dymometr\Dymometr\mapper\implementations\SensorMapper.class
+com\dymometr\Dymometr\domain\entity\UserEntity$UserEntityBuilder.class
+com\dymometr\Dymometr\mapper\implementations\UserMapper.class
 com\dymometr\Dymometr\config\WebConfig$1.class
+com\dymometr\Dymometr\domain\entity\UserEntity.class
+com\dymometr\Dymometr\services\implementations\UserServiceImpl.class
 com\dymometr\Dymometr\DymometrApplication.class
+com\dymometr\Dymometr\domain\dto\UserDto$UserDtoBuilder.class
 com\dymometr\Dymometr\controllers\WelcomeController.class
 com\dymometr\Dymometr\domain\entity\SensorLocalizationEntity.class
 com\dymometr\Dymometr\domain\dto\SensorLocalizationDto$SensorLocalizationDtoBuilder.class
@@ -25,5 +33,6 @@ com\dymometr\Dymometr\controllers\SensorDataController.class
 com\dymometr\Dymometr\domain\dto\SensorDto.class
 com\dymometr\Dymometr\domain\dto\SensorLocalizationDto.class
 com\dymometr\Dymometr\domain\dto\SensorDataDto.class
+com\dymometr\Dymometr\controllers\UserController.class
 com\dymometr\Dymometr\mapper\Mapper.class
 com\dymometr\Dymometr\repositories\SensorRepository.class
