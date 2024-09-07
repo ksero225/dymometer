@@ -50,7 +50,7 @@ public class UserController {
                 null,
                 HttpStatus.CONFLICT
         ));
-
     }
 
+    //zapytanie co zwraca count i avg
 }
