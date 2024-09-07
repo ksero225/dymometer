@@ -1,1 +1,6 @@
+com\dymometr\Dymometr\TestDataUtilities.class
+com\dymometr\Dymometr\controllersTests\SensorDataControllerTests.class
+com\dymometr\Dymometr\controllersTests\SensorControllerTests.class
 com\dymometr\Dymometr\DymometrApplicationTests.class
+com\dymometr\Dymometr\repositoriesTests\SensorDataRepositoryTests.class
+com\dymometr\Dymometr\repositoriesTests\SensorRepositoryTests.class
