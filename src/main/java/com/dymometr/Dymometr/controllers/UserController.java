@@ -33,7 +33,7 @@ public class UserController {
         if (isUserRegistered) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-            throw new RuntimeException("Login or email is already taken");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -43,14 +43,13 @@ public class UserController {
 
         Optional<UserEntity> foundUserEntity = userService.findUser(userEntity);
 
-        if (foundUserEntity.isEmpty()) {
-            throw new RuntimeException("Failed to login, check your login or password");
-        } else {
-            return new ResponseEntity<>(
-                    userMapper.mapTo(foundUserEntity.get()),
-                    HttpStatus.OK
-            );
-        }
+        return foundUserEntity.map(user -> new ResponseEntity<>(
+                userMapper.mapTo(user),
+                HttpStatus.OK
+        )).orElseGet(() -> new ResponseEntity<>(
+                null,
+                HttpStatus.CONFLICT
+        ));
 
     }
 
