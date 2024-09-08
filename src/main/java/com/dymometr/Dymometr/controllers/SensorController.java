@@ -52,8 +52,6 @@ public class SensorController {
         );
     }
 
-    //todo change it to pageable
-
     @GetMapping(path = "/sensor")
     public List<SensorDto> filterSensor(
             @RequestParam(value = "voivodeship", required = false) String voivodeship,

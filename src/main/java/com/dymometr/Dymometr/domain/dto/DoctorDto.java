@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 public class DoctorDto {
     private Long doctorId;
     private String doctorName;
-//    private String doctorSpecialization;
-//    private String doctorAddress;
-
-    //lista dostępnych wizyt
+    private String doctorSpecialization;
+    private String doctorOfficeTown;
 }

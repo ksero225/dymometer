@@ -7,6 +7,7 @@ import com.dymometr.Dymometr.services.interfaces.DoctorService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,8 +21,14 @@ public class DoctorController {
     }
 
     @GetMapping(path = "/doctors")
-    public Page<DoctorDto> getListOfDoctors(Pageable pageable) {
-        Page<DoctorEntity> listOfDoctors = doctorService.findAll(pageable);
+    public Page<DoctorDto> getListOfDoctors(
+            Pageable pageable,
+            @RequestParam(value = "doctorName", required = false) String doctorName,
+            @RequestParam(value = "doctorSpecialziation", required = false) String doctorSpecialization,
+            @RequestParam(value = "doctorTown", required = false) String doctorTown
+    ) {
+
+        Page<DoctorEntity> listOfDoctors = doctorService.findAll(pageable, doctorName, doctorSpecialization, doctorTown);
         return listOfDoctors.map(doctorMapper::mapTo);
     }
 }
