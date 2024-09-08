@@ -18,7 +18,6 @@ public class DoctorEntity {
     private Long doctorId;
 
     private String doctorName;
-//    private String doctorSurname;
 //    private String doctorSpecialization;
 //    private String doctorAddress;
 }

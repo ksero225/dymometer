@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Builder
@@ -26,6 +27,12 @@ public class SensorLocalizationEntity {
 
     @Column(name = "town")
     private String sensorTown;
+
+    @Column(name = "sensor_latitude")
+    private BigDecimal sensorLatitude;
+
+    @Column(name = "sensor_longitude")
+    private BigDecimal sensorLongitude;
 
 //    @JsonManagedReference
 //    @OneToMany(mappedBy = "sensorLocalization", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
