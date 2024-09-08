@@ -22,7 +22,7 @@ public class DoctorSpecifications {
     public static Specification<DoctorEntity> hasDoctorTown(String doctorTown) {
         return ((root, query, criteriaBuilder) ->
                 criteriaBuilder.equal(
-                        root.get("doctorTown"),
+                        root.get("doctorOfficeTown"),
                         doctorTown.toLowerCase())
         );
     }

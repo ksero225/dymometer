@@ -24,7 +24,7 @@ public class DoctorController {
     public Page<DoctorDto> getListOfDoctors(
             Pageable pageable,
             @RequestParam(value = "doctorName", required = false) String doctorName,
-            @RequestParam(value = "doctorSpecialziation", required = false) String doctorSpecialization,
+            @RequestParam(value = "doctorSpecialization", required = false) String doctorSpecialization,
             @RequestParam(value = "doctorTown", required = false) String doctorTown
     ) {
 

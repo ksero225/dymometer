@@ -27,7 +27,7 @@ public class DoctorServiceImpl implements DoctorService {
     public Page<DoctorEntity> findAll(Pageable pageable, String doctorName, String doctorSpecialization, String doctorTown) {
         Specification<DoctorEntity> spec = Specification.where(null);
 
-        if (doctorName != null && !doctorTown.isEmpty()) {
+        if (doctorName != null && !doctorName.isEmpty()) {
             spec = spec.and(DoctorSpecifications.hasDoctorName(doctorName));
         }
         if (doctorSpecialization != null && !doctorSpecialization.isEmpty()) {
