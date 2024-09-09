@@ -10,12 +10,15 @@ import com.dymometr.Dymometr.services.interfaces.UserService;
 import com.dymometr.Dymometr.services.interfaces.VisitService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class VisitController {
@@ -54,5 +57,20 @@ public class VisitController {
         userService.save(foundUser.get());
 
         return new ResponseEntity<>(HttpStatus.OK);
-    };
+    }
+
+    @GetMapping(path = "/visit/user")
+    public List<VisitDto> getUserVisits(@RequestParam(value = "userId") Long userId){
+        Optional<UserEntity> foundUserEntity = userService.findById(userId);
+
+        if(foundUserEntity.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
+        }
+
+        List<VisitEntity> userVisits = foundUserEntity.get().getUserVisits();
+
+        return userVisits.stream().map(visitMapper::mapTo).collect(Collectors.toList());
+    }
+
+
 }

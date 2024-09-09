@@ -2,13 +2,16 @@ package com.dymometr.Dymometr.controllers;
 
 import com.dymometr.Dymometr.domain.dto.UserDto;
 import com.dymometr.Dymometr.domain.entity.UserEntity;
+import com.dymometr.Dymometr.domain.entity.VisitEntity;
 import com.dymometr.Dymometr.mapper.Mapper;
 import com.dymometr.Dymometr.mapper.implementations.UserMapper;
 import com.dymometr.Dymometr.services.interfaces.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -50,6 +53,5 @@ public class UserController {
                 HttpStatus.CONFLICT
         ));
     }
-
     //zapytanie co zwraca count i avg
 }
