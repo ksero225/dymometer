@@ -9,8 +9,8 @@ public class DoctorSpecifications {
         return ((root, query, criteriaBuilder) ->
                 criteriaBuilder.like(
                         root.get("doctorName"),
-                        doctorName.toLowerCase())
-        );
+                        "%" + doctorName + "%"
+        ));
     }
     public static Specification<DoctorEntity> hasDoctorSpecialization(String doctorSpecialization) {
         return ((root, query, criteriaBuilder) ->
