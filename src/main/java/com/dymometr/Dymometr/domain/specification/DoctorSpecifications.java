@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class DoctorSpecifications {
     public static Specification<DoctorEntity> hasDoctorName(String doctorName) {
         return ((root, query, criteriaBuilder) ->
-                criteriaBuilder.equal(
+                criteriaBuilder.like(
                         root.get("doctorName"),
                         doctorName.toLowerCase())
         );
