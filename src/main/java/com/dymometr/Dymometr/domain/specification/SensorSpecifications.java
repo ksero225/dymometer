@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 public class SensorSpecifications {
     public static Specification<SensorEntity> hasVoivodeship(String voivodeship) {
         return ((root, query, criteriaBuilder) ->
-                criteriaBuilder.equal(
+                criteriaBuilder.like(
                         criteriaBuilder.lower(
                                 root.get("sensorLocalization")
                                         .get("sensorVoivodeship")),
