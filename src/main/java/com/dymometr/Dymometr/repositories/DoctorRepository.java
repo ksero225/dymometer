@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface DoctorRepository extends JpaRepository<DoctorEntity, Long>,
         PagingAndSortingRepository<DoctorEntity, Long>,
         JpaSpecificationExecutor<DoctorEntity> {
+    boolean existsDoctorEntityByDoctorId(Long doctorId);
 }

@@ -1,5 +1,6 @@
 package com.dymometr.Dymometr.services.implementations;
 
+import com.dymometr.Dymometr.domain.entity.SensorEntity;
 import com.dymometr.Dymometr.domain.entity.UserEntity;
 import com.dymometr.Dymometr.repositories.UserRepository;
 import com.dymometr.Dymometr.services.interfaces.UserService;
@@ -25,11 +26,32 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+//    @Override
+//    public void partialUpdate(UserEntity foundUser) {
+//
+//            Optional<UserEntity> user = userRepository.findById(foundUser.getUserId());
+//
+//            return user.map(existingUser -> {
+//                Optional.ofNullable(foundUser.getUserLogin()).ifPresent(existingUser::setUserLogin);
+//                Optional.ofNullable(foundUser.getUserLogin()).ifPresent(existingUser::setUserLogin);
+//                Optional.ofNullable(foundUser.getUserLogin()).ifPresent(existingUser::setUserLogin);
+//                Optional.ofNullable(foundUser.getUserLogin()).ifPresent(existingUser::setUserLogin);
+//
+//                return userRepository.save(existingSensor);
+//            }).orElseThrow(() -> new RuntimeException("Sensor does not exist"));
+//
+//    }
+
     @Override
-    public Optional<UserEntity> findUser(UserEntity userEntity) {
+    public Optional<UserEntity> findById(Long userId) {
+        return userRepository.findById(userId);
+    }
+
+    @Override
+    public Optional<UserEntity> findUser(String userLogin, String userPassword) {
         return userRepository.findUserEntityByUserLoginAndUserPassword(
-                userEntity.getUserLogin(),
-                userEntity.getUserPassword()
+                userLogin,
+                userPassword
         );
     }
 

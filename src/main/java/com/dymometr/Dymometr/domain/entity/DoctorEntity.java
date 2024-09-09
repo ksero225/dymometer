@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class DoctorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "doctor_id")
     private Long doctorId;
 
     private String doctorName;

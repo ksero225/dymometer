@@ -7,10 +7,7 @@ import com.dymometr.Dymometr.mapper.implementations.UserMapper;
 import com.dymometr.Dymometr.services.interfaces.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -38,10 +35,12 @@ public class UserController {
     }
 
     @GetMapping(path = "/user")
-    public ResponseEntity<UserDto> loginUser(@RequestBody UserDto userDto) {
-        UserEntity userEntity = userMapper.mapFrom(userDto);
+    public ResponseEntity<UserDto> loginUser(
+            @RequestParam(value = "login") String userLogin,
+            @RequestParam(value = "password") String userPassword
+    ) {
 
-        Optional<UserEntity> foundUserEntity = userService.findUser(userEntity);
+        Optional<UserEntity> foundUserEntity = userService.findUser(userLogin, userPassword);
 
         return foundUserEntity.map(user -> new ResponseEntity<>(
                 userMapper.mapTo(user),
