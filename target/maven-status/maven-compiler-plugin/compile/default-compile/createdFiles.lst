@@ -1,3 +1,4 @@
+com\dymometr\Dymometr\repositories\VisitRepository.class
 com\dymometr\Dymometr\config\MapperConfig.class
 com\dymometr\Dymometr\services\implementations\SensorServiceImpl.class
 com\dymometr\Dymometr\domain\dto\UserDto.class
@@ -6,6 +7,7 @@ com\dymometr\Dymometr\domain\entity\SensorEntity$SensorEntityBuilder.class
 com\dymometr\Dymometr\domain\dto\DoctorDto.class
 com\dymometr\Dymometr\mapper\implementations\SensorDataMapper.class
 com\dymometr\Dymometr\services\implementations\SensorDataServiceImpl.class
+com\dymometr\Dymometr\domain\entity\VisitEntity$VisitEntityBuilder.class
 com\dymometr\Dymometr\domain\entity\SensorDataEntity.class
 com\dymometr\Dymometr\domain\entity\DoctorEntity.class
 com\dymometr\Dymometr\domain\entity\UserEntity$UserEntityBuilder.class
@@ -33,16 +35,23 @@ com\dymometr\Dymometr\domain\dto\SensorDataDto$SensorDataDtoBuilder.class
 com\dymometr\Dymometr\domain\dto\SensorDto$SensorDtoBuilder.class
 com\dymometr\Dymometr\controllers\DoctorController.class
 com\dymometr\Dymometr\domain\entity\SensorLocalizationEntity$SensorLocalizationEntityBuilder.class
+com\dymometr\Dymometr\services\interfaces\VisitService.class
 com\dymometr\Dymometr\controllers\SensorController.class
+com\dymometr\Dymometr\services\implementations\VisitServiceImpl.class
 com\dymometr\Dymometr\mapper\implementations\SensorMapper.class
 com\dymometr\Dymometr\mapper\implementations\UserMapper.class
 com\dymometr\Dymometr\services\implementations\DoctorServiceImpl.class
+com\dymometr\Dymometr\mapper\implementations\VisitMapper.class
+com\dymometr\Dymometr\domain\entity\VisitEntity.class
 com\dymometr\Dymometr\DymometrApplication.class
 com\dymometr\Dymometr\domain\dto\UserDto$UserDtoBuilder.class
+com\dymometr\Dymometr\domain\dto\VisitDto$VisitDtoBuilder.class
 com\dymometr\Dymometr\controllers\WelcomeController.class
 com\dymometr\Dymometr\domain\entity\SensorLocalizationEntity.class
+com\dymometr\Dymometr\domain\dto\VisitDto.class
 com\dymometr\Dymometr\services\interfaces\DoctorService.class
 com\dymometr\Dymometr\domain\dto\SensorDto.class
 com\dymometr\Dymometr\repositories\DoctorRepository.class
+com\dymometr\Dymometr\controllers\VisitController.class
 com\dymometr\Dymometr\mapper\Mapper.class
 com\dymometr\Dymometr\domain\specification\DoctorSpecifications.class
