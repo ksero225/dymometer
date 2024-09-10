@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
+import java.util.List;
+
 @RestController
 public class DoctorController {
     private final DoctorService doctorService;
@@ -30,5 +33,10 @@ public class DoctorController {
 
         Page<DoctorEntity> listOfDoctors = doctorService.findAll(pageable, doctorName, doctorSpecialization, doctorTown);
         return listOfDoctors.map(doctorMapper::mapTo);
+    }
+
+    @GetMapping(path = "/specializations")
+    public List<String> getListOfSpecializations(){
+        return doctorService.findAllSpecializations();
     }
 }

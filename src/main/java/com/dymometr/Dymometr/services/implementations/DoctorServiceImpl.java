@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,11 +20,10 @@ public class DoctorServiceImpl implements DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
-//    @Override
-//    public Page<DoctorEntity> findAll(Pageable pageable) {
-//        return doctorRepository.findAll(pageable);
-//    }
-
+    @Override
+    public List<String> findAllSpecializations() {
+        return doctorRepository.findDistinctSpecializations();
+    }
 
     @Override
     public Page<DoctorEntity> findAll(Pageable pageable, String doctorName, String doctorSpecialization, String doctorTown) {
